@@ -106,7 +106,7 @@ abstract class AppLocalizations {
   /// Placeholder text for search input
   ///
   /// In en, this message translates to:
-  /// **'Search messages'**
+  /// **'Search messages...'**
   String get searchMessages;
 
   /// Label for today's date
@@ -145,11 +145,35 @@ abstract class AppLocalizations {
   /// **'No messages yet'**
   String get noMessages;
 
+  /// Empty state for chat detail
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet.\nStart the conversation!'**
+  String get noMessagesStartConversation;
+
   /// Empty state text when no conversations exist
   ///
   /// In en, this message translates to:
   /// **'No conversations yet'**
   String get noConversations;
+
+  /// Empty state when search has no results
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get noResultsFound;
+
+  /// Error message when messages fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load messages'**
+  String get failedToLoadMessages;
+
+  /// Retry button text
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
 
   /// Home tab label
   ///
@@ -157,11 +181,23 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get home;
 
+  /// Explore tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get explore;
+
   /// Chats tab label
   ///
   /// In en, this message translates to:
   /// **'Chats'**
   String get chats;
+
+  /// Notifications tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
 
   /// Contacts tab label
   ///
@@ -180,6 +216,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// Time ago in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{count} min'**
+  String minutesAgo(int count);
+
+  /// Time ago in hours (singular)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} hour'**
+  String hoursAgo(int count);
+
+  /// Time ago in hours (plural)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} hours'**
+  String hoursAgoPlural(int count);
+
+  /// Time ago in days
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String daysAgo(int count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

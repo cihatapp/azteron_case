@@ -15,7 +15,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get messagesTitle => 'Mesajlar';
 
   @override
-  String get searchMessages => 'Mesajlarda ara';
+  String get searchMessages => 'Mesajlarda ara...';
 
   @override
   String get today => 'Bugün';
@@ -36,13 +36,31 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noMessages => 'Henüz mesaj yok';
 
   @override
+  String get noMessagesStartConversation => 'Henüz mesaj yok.\nSohbeti başlatın!';
+
+  @override
   String get noConversations => 'Henüz sohbet yok';
+
+  @override
+  String get noResultsFound => 'Sonuç bulunamadı';
+
+  @override
+  String get failedToLoadMessages => 'Mesajlar yüklenemedi';
+
+  @override
+  String get retry => 'Tekrar Dene';
 
   @override
   String get home => 'Ana Sayfa';
 
   @override
+  String get explore => 'Keşfet';
+
+  @override
   String get chats => 'Sohbetler';
+
+  @override
+  String get notifications => 'Bildirimler';
 
   @override
   String get contacts => 'Kişiler';
@@ -52,4 +70,24 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profile => 'Profil';
+
+  @override
+  String minutesAgo(int count) {
+    return '$count dk';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$count saat';
+  }
+
+  @override
+  String hoursAgoPlural(int count) {
+    return '$count saat';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$count gün';
+  }
 }

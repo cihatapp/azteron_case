@@ -4,7 +4,7 @@
     "@messagesTitle": {
         "description": "Title shown in the Messages screen AppBar"
     },
-    "searchMessages": "Search messages",
+    "searchMessages": "Search messages...",
     "@searchMessages": {
         "description": "Placeholder text for search input"
     },
@@ -32,17 +32,41 @@
     "@noMessages": {
         "description": "Empty state text when no messages exist"
     },
+    "noMessagesStartConversation": "No messages yet.\nStart the conversation!",
+    "@noMessagesStartConversation": {
+        "description": "Empty state for chat detail"
+    },
     "noConversations": "No conversations yet",
     "@noConversations": {
         "description": "Empty state text when no conversations exist"
+    },
+    "noResultsFound": "No results found",
+    "@noResultsFound": {
+        "description": "Empty state when search has no results"
+    },
+    "failedToLoadMessages": "Failed to load messages",
+    "@failedToLoadMessages": {
+        "description": "Error message when messages fail to load"
+    },
+    "retry": "Retry",
+    "@retry": {
+        "description": "Retry button text"
     },
     "home": "Home",
     "@home": {
         "description": "Home tab label"
     },
+    "explore": "Explore",
+    "@explore": {
+        "description": "Explore tab label"
+    },
     "chats": "Chats",
     "@chats": {
         "description": "Chats tab label"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Notifications tab label"
     },
     "contacts": "Contacts",
     "@contacts": {
@@ -55,5 +79,41 @@
     "profile": "Profile",
     "@profile": {
         "description": "Profile tab label"
+    },
+    "minutesAgo": "{count} min",
+    "@minutesAgo": {
+        "description": "Time ago in minutes",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hoursAgo": "{count} hour",
+    "@hoursAgo": {
+        "description": "Time ago in hours (singular)",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hoursAgoPlural": "{count} hours",
+    "@hoursAgoPlural": {
+        "description": "Time ago in hours (plural)",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "daysAgo": "{count} days",
+    "@daysAgo": {
+        "description": "Time ago in days",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
     }
 }
