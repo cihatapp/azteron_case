@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:azteron_case/features/chat_detail/cubit/chat_detail_cubit.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:azteron_case/features/chat_detail/widgets/chat_app_bar.dart';
@@ -21,8 +21,6 @@ class ChatDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
     return Scaffold(
       appBar: ChatAppBar(user: conversation.user),
       body: Column(
@@ -43,7 +41,7 @@ class ChatDetailView extends StatelessWidget {
                         children: [
                           const Icon(Icons.error_outline, size: 48),
                           const SizedBox(height: 16),
-                          Text(l10n.failedToLoadMessages),
+                          Text(context.l10n.failedToLoadMessages),
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
@@ -51,7 +49,7 @@ class ChatDetailView extends StatelessWidget {
                                 context.read<ChatDetailCubit>().loadMessages(),
                               );
                             },
-                            child: Text(l10n.retry),
+                            child: Text(context.l10n.retry),
                           ),
                         ],
                       ),
@@ -65,24 +63,17 @@ class ChatDetailView extends StatelessWidget {
                             Icon(
                               Icons.chat_bubble_outline,
                               size: 64,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
+                              color: context.colorScheme.onSurface
                                   .withValues(alpha: 0.3),
                             ),
                             const SizedBox(height: 16),
                             Text(
-                              l10n.noMessagesStartConversation,
+                              context.l10n.noMessagesStartConversation,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface
-                                        .withValues(alpha: 0.5),
-                                  ),
+                              style: context.textTheme.bodyLarge?.copyWith(
+                                color: context.colorScheme.onSurface
+                                    .withValues(alpha: 0.5),
+                              ),
                             ),
                           ],
                         ),
