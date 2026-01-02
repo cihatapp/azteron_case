@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
 import 'package:azteron_case/features/messages/cubit/messages_cubit.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile.dart';
@@ -39,7 +40,7 @@ class MessagesView extends StatelessWidget {
                         children: [
                           const Icon(Icons.error_outline, size: 48),
                           const SizedBox(height: 16),
-                          const Text('Failed to load messages'),
+                          Text(context.l10n.failedToLoadMessages),
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
@@ -49,7 +50,7 @@ class MessagesView extends StatelessWidget {
                                     .loadConversations(),
                               );
                             },
-                            child: const Text('Retry'),
+                            child: Text(context.l10n.retry),
                           ),
                         ],
                       ),
@@ -65,25 +66,18 @@ class MessagesView extends StatelessWidget {
                             Icon(
                               Icons.chat_bubble_outline,
                               size: 64,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
+                              color: context.colorScheme.onSurface
                                   .withValues(alpha: 0.3),
                             ),
                             const SizedBox(height: 16),
                             Text(
                               state.searchQuery.isNotEmpty
-                                  ? 'No results found'
-                                  : 'No messages yet',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface
-                                        .withValues(alpha: 0.5),
-                                  ),
+                                  ? context.l10n.noResultsFound
+                                  : context.l10n.noMessages,
+                              style: context.textTheme.bodyLarge?.copyWith(
+                                color: context.colorScheme.onSurface
+                                    .withValues(alpha: 0.5),
+                              ),
                             ),
                           ],
                         ),
@@ -95,9 +89,7 @@ class MessagesView extends StatelessWidget {
                       separatorBuilder: (context, index) => Divider(
                         height: 1,
                         indent: 80,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
+                        color: context.colorScheme.outline
                             .withValues(alpha: 0.2),
                       ),
                       itemBuilder: (context, index) {

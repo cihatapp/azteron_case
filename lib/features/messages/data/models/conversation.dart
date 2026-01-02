@@ -29,20 +29,15 @@ class Conversation extends Equatable {
   /// Whether there are unread messages.
   bool get hasUnread => unreadCount > 0;
 
-  /// Format time for display (e.g., "13 min", "26 min").
-  String get formattedTime {
+  /// Get time difference info for localized formatting.
+  ({int minutes, int hours, int days}) get timeDiff {
     final now = DateTime.now();
     final diff = now.difference(lastMessageTime);
-
-    if (diff.inMinutes < 60) {
-      return '${diff.inMinutes} min';
-    } else if (diff.inHours < 24) {
-      return '${diff.inHours} hour${diff.inHours > 1 ? 's' : ''}';
-    } else if (diff.inDays == 1) {
-      return 'Yesterday';
-    } else {
-      return '${diff.inDays} days';
-    }
+    return (
+      minutes: diff.inMinutes,
+      hours: diff.inHours,
+      days: diff.inDays,
+    );
   }
 
   @override

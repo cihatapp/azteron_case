@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class MessagesBottomNav extends StatelessWidget {
@@ -10,40 +11,38 @@ class MessagesBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return BottomNavigationBar(
       currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: theme.colorScheme.primary,
-      unselectedItemColor: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+      selectedItemColor: context.colorScheme.primary,
+      unselectedItemColor: context.colorScheme.onSurface.withValues(alpha: 0.5),
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home),
-          label: 'Home',
+          icon: const Icon(Icons.home_outlined),
+          activeIcon: const Icon(Icons.home),
+          label: context.l10n.home,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.explore_outlined),
-          activeIcon: Icon(Icons.explore),
-          label: 'Explore',
+          icon: const Icon(Icons.explore_outlined),
+          activeIcon: const Icon(Icons.explore),
+          label: context.l10n.explore,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat_bubble_outline),
-          activeIcon: Icon(Icons.chat_bubble),
-          label: 'Messages',
+          icon: const Icon(Icons.chat_bubble_outline),
+          activeIcon: const Icon(Icons.chat_bubble),
+          label: context.l10n.messagesTitle,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.notifications_outlined),
-          activeIcon: Icon(Icons.notifications),
-          label: 'Notifications',
+          icon: const Icon(Icons.notifications_outlined),
+          activeIcon: const Icon(Icons.notifications),
+          label: context.l10n.notifications,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          activeIcon: Icon(Icons.person),
-          label: 'Profile',
+          icon: const Icon(Icons.person_outline),
+          activeIcon: const Icon(Icons.person),
+          label: context.l10n.profile,
         ),
       ],
       onTap: (index) {
