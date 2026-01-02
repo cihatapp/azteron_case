@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:azteron_case/core/theme/light/color_scheme_light.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final colors = ColorSchemeLight();
     final isSent = message.isSentByMe;
 
@@ -20,7 +20,7 @@ class MessageBubble extends StatelessWidget {
       alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
         constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.75,
+          maxWidth: context.screenWidth * 0.75,
         ),
         margin: EdgeInsets.only(
           left: isSent ? 48 : 16,
@@ -43,15 +43,15 @@ class MessageBubble extends StatelessWidget {
           children: [
             Text(
               message.content,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               message.formattedTime,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+              style: context.textTheme.bodySmall?.copyWith(
+                color: context.colorScheme.onSurface.withValues(alpha: 0.5),
                 fontSize: 10,
               ),
             ),

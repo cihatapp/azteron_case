@@ -1,4 +1,4 @@
-import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class MessageInputField extends StatefulWidget {
@@ -35,21 +35,18 @@ class _MessageInputFieldState extends State<MessageInputField> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context);
-
     return Container(
       padding: EdgeInsets.only(
         left: 16,
         right: 8,
         top: 8,
-        bottom: MediaQuery.of(context).padding.bottom + 8,
+        bottom: context.bottomPadding + 8,
       ),
       decoration: BoxDecoration(
-        color: theme.scaffoldBackgroundColor,
+        color: context.theme.scaffoldBackgroundColor,
         border: Border(
           top: BorderSide(
-            color: theme.colorScheme.outline.withValues(alpha: 0.2),
+            color: context.colorScheme.outline.withValues(alpha: 0.2),
           ),
         ),
       ),
@@ -64,12 +61,12 @@ class _MessageInputFieldState extends State<MessageInputField> {
               onSubmitted: (_) => _handleSend(),
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
-                hintText: l10n.typeMessage,
+                hintText: context.l10n.typeMessage,
                 hintStyle: TextStyle(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                  color: context.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
                 filled: true,
-                fillColor: theme.colorScheme.surfaceContainerHighest,
+                fillColor: context.colorScheme.surfaceContainerHighest,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
                   borderSide: BorderSide.none,
@@ -99,8 +96,9 @@ class _MessageInputFieldState extends State<MessageInputField> {
                     icon: Icon(
                       _hasText ? Icons.send : Icons.mic,
                       color: _hasText
-                          ? theme.colorScheme.primary
-                          : theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                          ? context.colorScheme.primary
+                          : context.colorScheme.onSurface
+                              .withValues(alpha: 0.5),
                     ),
                   ),
           ),
