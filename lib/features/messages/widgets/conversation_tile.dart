@@ -1,4 +1,4 @@
-import 'package:azteron_case/core/widgets/avatar_with_status.dart';
+import 'package:azteron_case/features/widgets/avatar_with_status.dart';
 import 'package:azteron_case/features/messages/data/models/conversation.dart';
 import 'package:flutter/material.dart';
 
