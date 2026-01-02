@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 /// Online indicator color
@@ -40,8 +41,7 @@ class AvatarWithStatus extends StatelessWidget {
           CircleAvatar(
             radius: radius,
             backgroundImage: NetworkImage(imageUrl),
-            backgroundColor:
-                Theme.of(context).colorScheme.surfaceContainerHighest,
+            backgroundColor: context.colorScheme.surfaceContainerHighest,
             onBackgroundImageError: (exception, stackTrace) {},
           ),
           Positioned(
@@ -54,7 +54,7 @@ class AvatarWithStatus extends StatelessWidget {
                 color: isOnline ? _onlineColor : _offlineColor,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: context.colorScheme.surface,
                   width: 2,
                 ),
               ),
