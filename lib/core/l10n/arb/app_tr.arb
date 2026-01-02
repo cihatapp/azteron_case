@@ -1,0 +1,17 @@
+{
+    "@@locale": "tr",
+    "messagesTitle": "Mesajlar",
+    "searchMessages": "Mesajlarda ara",
+    "today": "Bugün",
+    "yesterday": "Dün",
+    "online": "Çevrimiçi",
+    "offline": "Çevrimdışı",
+    "typeMessage": "Bir mesaj yazın...",
+    "noMessages": "Henüz mesaj yok",
+    "noConversations": "Henüz sohbet yok",
+    "home": "Ana Sayfa",
+    "chats": "Sohbetler",
+    "contacts": "Kişiler",
+    "settings": "Ayarlar",
+    "profile": "Profil"
+}

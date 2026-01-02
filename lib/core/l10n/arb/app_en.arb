@@ -1,0 +1,59 @@
+{
+    "@@locale": "en",
+    "messagesTitle": "Messages",
+    "@messagesTitle": {
+        "description": "Title shown in the Messages screen AppBar"
+    },
+    "searchMessages": "Search messages",
+    "@searchMessages": {
+        "description": "Placeholder text for search input"
+    },
+    "today": "Today",
+    "@today": {
+        "description": "Label for today's date"
+    },
+    "yesterday": "Yesterday",
+    "@yesterday": {
+        "description": "Label for yesterday's date"
+    },
+    "online": "Online",
+    "@online": {
+        "description": "User online status"
+    },
+    "offline": "Offline",
+    "@offline": {
+        "description": "User offline status"
+    },
+    "typeMessage": "Type a message...",
+    "@typeMessage": {
+        "description": "Placeholder for message input field"
+    },
+    "noMessages": "No messages yet",
+    "@noMessages": {
+        "description": "Empty state text when no messages exist"
+    },
+    "noConversations": "No conversations yet",
+    "@noConversations": {
+        "description": "Empty state text when no conversations exist"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home tab label"
+    },
+    "chats": "Chats",
+    "@chats": {
+        "description": "Chats tab label"
+    },
+    "contacts": "Contacts",
+    "@contacts": {
+        "description": "Contacts tab label"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings tab label"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Profile tab label"
+    }
+}
