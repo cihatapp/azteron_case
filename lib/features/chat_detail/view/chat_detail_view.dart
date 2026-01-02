@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
 import 'package:azteron_case/features/chat_detail/cubit/chat_detail_cubit.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:azteron_case/features/chat_detail/widgets/chat_app_bar.dart';
@@ -20,6 +21,8 @@ class ChatDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: ChatAppBar(user: conversation.user),
       body: Column(
@@ -40,7 +43,7 @@ class ChatDetailView extends StatelessWidget {
                         children: [
                           const Icon(Icons.error_outline, size: 48),
                           const SizedBox(height: 16),
-                          const Text('Failed to load messages'),
+                          Text(l10n.failedToLoadMessages),
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () {
@@ -48,7 +51,7 @@ class ChatDetailView extends StatelessWidget {
                                 context.read<ChatDetailCubit>().loadMessages(),
                               );
                             },
-                            child: const Text('Retry'),
+                            child: Text(l10n.retry),
                           ),
                         ],
                       ),
@@ -69,7 +72,7 @@ class ChatDetailView extends StatelessWidget {
                             ),
                             const SizedBox(height: 16),
                             Text(
-                              'No messages yet.\nStart the conversation!',
+                              l10n.noMessagesStartConversation,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme

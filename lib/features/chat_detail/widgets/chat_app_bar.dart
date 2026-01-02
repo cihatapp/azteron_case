@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
 import 'package:azteron_case/features/messages/data/models/user.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return AppBar(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -43,7 +45,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 if (user.isOnline)
                   Text(
-                    'Online',
+                    l10n.online,
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: Colors.green,
                     ),

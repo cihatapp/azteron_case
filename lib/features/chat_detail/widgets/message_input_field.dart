@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class MessageInputField extends StatefulWidget {
@@ -35,6 +36,7 @@ class _MessageInputFieldState extends State<MessageInputField> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Container(
       padding: EdgeInsets.only(
@@ -62,7 +64,7 @@ class _MessageInputFieldState extends State<MessageInputField> {
               onSubmitted: (_) => _handleSend(),
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
-                hintText: 'Type a message...',
+                hintText: l10n.typeMessage,
                 hintStyle: TextStyle(
                   color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),

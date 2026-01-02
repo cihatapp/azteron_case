@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class DateSeparator extends StatelessWidget {
@@ -8,16 +9,16 @@ class DateSeparator extends StatelessWidget {
 
   final DateTime date;
 
-  String get _formattedDate {
+  String _getFormattedDate(AppLocalizations l10n) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final yesterday = today.subtract(const Duration(days: 1));
     final dateOnly = DateTime(date.year, date.month, date.day);
 
     if (dateOnly == today) {
-      return 'Today';
+      return l10n.today;
     } else if (dateOnly == yesterday) {
-      return 'Yesterday';
+      return l10n.yesterday;
     } else {
       return '${date.day}/${date.month}/${date.year}';
     }
@@ -26,6 +27,7 @@ class DateSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -37,7 +39,7 @@ class DateSeparator extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Text(
-            _formattedDate,
+            _getFormattedDate(l10n),
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
