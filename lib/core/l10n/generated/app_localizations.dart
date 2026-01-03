@@ -20,7 +20,7 @@ import 'app_localizations_tr.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'gen/app_localizations.dart';
+/// import 'generated/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -240,6 +240,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} days'**
   String daysAgo(int count);
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get errorOccurred;
+
+  /// Error when message fails to send
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send message'**
+  String get failedToSendMessage;
+
+  /// Confirmation when message is sent successfully
+  ///
+  /// In en, this message translates to:
+  /// **'Message sent'**
+  String get messageSent;
+
+  /// Network connection error message
+  ///
+  /// In en, this message translates to:
+  /// **'Connection error. Please try again.'**
+  String get connectionError;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

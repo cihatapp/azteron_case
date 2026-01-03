@@ -23,5 +23,9 @@
     "minutesAgo": "{count} dk",
     "hoursAgo": "{count} saat",
     "hoursAgoPlural": "{count} saat",
-    "daysAgo": "{count} gün"
+    "daysAgo": "{count} gün",
+    "errorOccurred": "Bir hata oluştu",
+    "failedToSendMessage": "Mesaj gönderilemedi",
+    "messageSent": "Mesaj gönderildi",
+    "connectionError": "Bağlantı hatası. Lütfen tekrar deneyin."
 }

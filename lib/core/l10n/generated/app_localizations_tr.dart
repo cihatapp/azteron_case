@@ -90,4 +90,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String daysAgo(int count) {
     return '$count gün';
   }
+
+  @override
+  String get errorOccurred => 'Bir hata oluştu';
+
+  @override
+  String get failedToSendMessage => 'Mesaj gönderilemedi';
+
+  @override
+  String get messageSent => 'Mesaj gönderildi';
+
+  @override
+  String get connectionError => 'Bağlantı hatası. Lütfen tekrar deneyin.';
 }

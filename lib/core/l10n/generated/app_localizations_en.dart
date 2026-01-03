@@ -90,4 +90,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String daysAgo(int count) {
     return '$count days';
   }
+
+  @override
+  String get errorOccurred => 'An error occurred';
+
+  @override
+  String get failedToSendMessage => 'Failed to send message';
+
+  @override
+  String get messageSent => 'Message sent';
+
+  @override
+  String get connectionError => 'Connection error. Please try again.';
 }

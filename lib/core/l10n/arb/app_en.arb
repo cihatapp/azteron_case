@@ -115,5 +115,21 @@
                 "type": "int"
             }
         }
+    },
+    "errorOccurred": "An error occurred",
+    "@errorOccurred": {
+        "description": "Generic error message"
+    },
+    "failedToSendMessage": "Failed to send message",
+    "@failedToSendMessage": {
+        "description": "Error when message fails to send"
+    },
+    "messageSent": "Message sent",
+    "@messageSent": {
+        "description": "Confirmation when message is sent successfully"
+    },
+    "connectionError": "Connection error. Please try again.",
+    "@connectionError": {
+        "description": "Network connection error message"
     }
 }
