@@ -1,11 +1,5 @@
-import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
-
-/// Online indicator color
-const Color _onlineColor = Color(0xFF4CAF50);
-
-/// Offline indicator color
-const Color _offlineColor = Color(0xFF9E9E9E);
 
 /// A circular avatar with an online/offline status indicator.
 ///
@@ -51,7 +45,9 @@ class AvatarWithStatus extends StatelessWidget {
               width: statusSize,
               height: statusSize,
               decoration: BoxDecoration(
-                color: isOnline ? _onlineColor : _offlineColor,
+                color: isOnline
+                    ? context.appColors.onlineIndicator
+                    : context.appColors.offlineIndicator,
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: context.colorScheme.surface,
