@@ -18,6 +18,9 @@ class AppAssets {
   /// Heart logo used in Messages app bar
   String get heartLogo => 'assets/images/heart.svg';
 
+  /// Home icon for navigation
+  String get homeIcon => 'assets/images/home.svg';
+
   /// Search icon for search fields
   String get searchIcon => 'assets/images/search.svg';
 
