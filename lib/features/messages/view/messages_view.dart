@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:azteron_case/core/extensions/context_extension.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
+import 'package:azteron_case/core/widgets/widgets.dart';
 import 'package:azteron_case/features/messages/bloc/messages_cubit.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile_shimmer.dart';
@@ -16,7 +17,8 @@ class MessagesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return UnfocusOnTap(
+      child: Scaffold(
       appBar: const MessagesAppBar(),
       body: Column(
         children: [
@@ -138,6 +140,7 @@ class MessagesView extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: const MessagesBottomNav(),
+      ),
     );
   }
 }
