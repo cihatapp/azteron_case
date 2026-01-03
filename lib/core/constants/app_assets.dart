@@ -35,4 +35,10 @@ class AppAssets {
 
   /// Profile icon for user profile
   String get profileIcon => 'assets/images/profile.svg';
+
+  /// Send icon for message input
+  String get sendIcon => 'assets/images/send.svg';
+
+  /// Microphone icon for voice input
+  String get micIcon => 'assets/images/mic.svg';
 }
