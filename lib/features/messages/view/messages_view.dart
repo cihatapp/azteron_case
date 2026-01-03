@@ -4,6 +4,7 @@ import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
 import 'package:azteron_case/features/messages/cubit/messages_cubit.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile.dart';
+import 'package:azteron_case/features/messages/widgets/conversation_tile_shimmer.dart';
 import 'package:azteron_case/features/messages/widgets/messages_app_bar.dart';
 import 'package:azteron_case/features/messages/widgets/messages_bottom_nav.dart';
 import 'package:azteron_case/features/messages/widgets/messages_search_bar.dart';
@@ -30,9 +31,7 @@ class MessagesView extends StatelessWidget {
                 switch (state.status) {
                   case MessagesStatus.initial:
                   case MessagesStatus.loading:
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const ConversationListShimmer();
                   case MessagesStatus.failure:
                     return Center(
                       child: Column(

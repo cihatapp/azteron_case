@@ -7,6 +7,7 @@ import 'package:azteron_case/features/chat_detail/widgets/chat_app_bar.dart';
 import 'package:azteron_case/features/chat_detail/widgets/date_separator.dart';
 import 'package:azteron_case/features/chat_detail/widgets/message_bubble.dart';
 import 'package:azteron_case/features/chat_detail/widgets/message_input_field.dart';
+import 'package:azteron_case/features/chat_detail/widgets/message_shimmer.dart';
 import 'package:azteron_case/features/messages/data/models/conversation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,9 +32,7 @@ class ChatDetailView extends StatelessWidget {
                 switch (state.status) {
                   case ChatDetailStatus.initial:
                   case ChatDetailStatus.loading:
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const MessageListShimmer();
                   case ChatDetailStatus.failure:
                     return Center(
                       child: Column(
