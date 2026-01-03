@@ -70,13 +70,49 @@ class ColorSchemeLight {
   final Color inversePrimary = const Color(0xFFFFB1C8);
   final Color surfaceTint = const Color(0xFFE91E63);
 
-  // Chat-specific colors (accessible via extension)
-  final Color sentBubble = const Color(0xFFFFEBEE);
-  final Color sentBubbleText = const Color(0xFF1A1A1A);
-  final Color receivedBubble = const Color(0xFFF5F5F5);
-  final Color receivedBubbleText = const Color(0xFF1A1A1A);
+  // ─────────────────────────────────────────────────
+  // Figma Design System Colors
+  // ─────────────────────────────────────────────────
+
+  // Text colors from Figma
+  /// Primary text color - Figma: #242424
+  final Color textPrimary = const Color(0xFF242424);
+
+  /// Secondary text color - Figma: #787878
+  final Color textSecondary = const Color(0xFF787878);
+
+  /// Tertiary text color - Figma: #686868
+  final Color textTertiary = const Color(0xFF686868);
+
+  // Chat bubble colors from Figma
+  /// Sent message bubble - Figma: #F5F5F5
+  final Color sentBubble = const Color(0xFFF5F5F5);
+
+  /// Sent message text - Figma: #242424
+  final Color sentBubbleText = const Color(0xFF242424);
+
+  /// Received message bubble - Figma: #FFE4E9 (light pink)
+  final Color receivedBubble = const Color(0xFFFFE4E9);
+
+  /// Received message text - Figma: #242424
+  final Color receivedBubbleText = const Color(0xFF242424);
+
+  // Status indicators from Figma
+  /// Online indicator - Figma: #4CAF50
   final Color onlineIndicator = const Color(0xFF4CAF50);
+
+  /// Offline indicator - Figma: #9E9E9E
   final Color offlineIndicator = const Color(0xFF9E9E9E);
+
+  // UI element colors from Figma
+  /// Search field background - Figma: #F5F5F5
+  final Color searchFieldBackground = const Color(0xFFF5F5F5);
+
+  /// Border color - Figma: #E8E8E8
+  final Color borderColor = const Color(0xFFE8E8E8);
+
+  /// Divider color - Figma: #E8E8E8
+  final Color dividerColor = const Color(0xFFE8E8E8);
 
   /// Get the full ColorScheme for Flutter
   ColorScheme get colorScheme => ColorScheme(

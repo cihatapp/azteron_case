@@ -70,13 +70,49 @@ class ColorSchemeDark {
   final Color inversePrimary = const Color(0xFFE91E63);
   final Color surfaceTint = const Color(0xFFFF4081);
 
-  // Chat-specific colors - Clear distinction
-  final Color sentBubble = const Color(0xFF3D2832);
+  // ─────────────────────────────────────────────────
+  // Figma Design System Colors (Dark Mode Variants)
+  // ─────────────────────────────────────────────────
+
+  // Text colors for dark mode
+  /// Primary text color - light for dark backgrounds
+  final Color textPrimary = const Color(0xFFFFFFFF);
+
+  /// Secondary text color - muted white
+  final Color textSecondary = const Color(0xFFB3B3B3);
+
+  /// Tertiary text color - more muted
+  final Color textTertiary = const Color(0xFF999999);
+
+  // Chat bubble colors for dark mode
+  /// Sent message bubble - dark gray
+  final Color sentBubble = const Color(0xFF2A2A2A);
+
+  /// Sent message text - white
   final Color sentBubbleText = const Color(0xFFFFFFFF);
-  final Color receivedBubble = const Color(0xFF2A2A2A);
+
+  /// Received message bubble - primary with opacity
+  final Color receivedBubble = const Color(0xFF3D1F2E);
+
+  /// Received message text - white
   final Color receivedBubbleText = const Color(0xFFFFFFFF);
+
+  // Status indicators
+  /// Online indicator
   final Color onlineIndicator = const Color(0xFF4ADE80);
+
+  /// Offline indicator
   final Color offlineIndicator = const Color(0xFF6B6B6B);
+
+  // UI element colors for dark mode
+  /// Search field background
+  final Color searchFieldBackground = const Color(0xFF2A2A2A);
+
+  /// Border color
+  final Color borderColor = const Color(0xFF404040);
+
+  /// Divider color
+  final Color dividerColor = const Color(0xFF404040);
 
   // Convenience aliases for backward compatibility
   Color get background => surface;
