@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:azteron_case/core/l10n/gen/app_localizations.dart';
-import 'package:azteron_case/core/locale/locale_cubit.dart';
+import 'package:azteron_case/core/l10n/generated/app_localizations.dart';
+import 'package:azteron_case/core/l10n/state/locale_cubit.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
 import 'package:azteron_case/core/theme/dark/dark_theme.dart';
 import 'package:azteron_case/core/theme/light/light_theme.dart';
