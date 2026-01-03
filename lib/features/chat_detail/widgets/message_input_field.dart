@@ -1,4 +1,4 @@
-import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class MessageInputField extends StatefulWidget {
@@ -46,7 +46,7 @@ class _MessageInputFieldState extends State<MessageInputField> {
         color: context.theme.scaffoldBackgroundColor,
         border: Border(
           top: BorderSide(
-            color: context.colorScheme.outline.withValues(alpha: 0.2),
+            color: context.appColors.borderColor,
           ),
         ),
       ),
@@ -62,11 +62,9 @@ class _MessageInputFieldState extends State<MessageInputField> {
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
                 hintText: context.l10n.typeMessage,
-                hintStyle: TextStyle(
-                  color: context.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
+                hintStyle: context.appStyles.inputPlaceholder,
                 filled: true,
-                fillColor: context.colorScheme.surfaceContainerHighest,
+                fillColor: context.appColors.searchFieldBackground,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
                   borderSide: BorderSide.none,

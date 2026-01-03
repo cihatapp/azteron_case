@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:azteron_case/core/extension/context_extension.dart';
-import 'package:azteron_case/features/chat_detail/cubit/chat_detail_cubit.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
+import 'package:azteron_case/features/chat_detail/bloc/chat_detail_cubit.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:azteron_case/features/chat_detail/widgets/chat_app_bar.dart';
 import 'package:azteron_case/features/chat_detail/widgets/date_separator.dart';
@@ -10,6 +10,7 @@ import 'package:azteron_case/features/chat_detail/widgets/message_input_field.da
 import 'package:azteron_case/features/chat_detail/widgets/message_shimmer.dart';
 import 'package:azteron_case/features/messages/data/models/conversation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatDetailView extends StatelessWidget {
@@ -22,13 +23,59 @@ class ChatDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ChatAppBar(user: conversation.user),
-      body: Column(
-        children: [
-          Expanded(
-            child: BlocBuilder<ChatDetailCubit, ChatDetailState>(
-              builder: (context, state) {
+    return BlocListener<ChatDetailCubit, ChatDetailState>(
+      listenWhen: (previous, current) =>
+          previous.lastEvent != current.lastEvent ||
+          (previous.errorMessage != current.errorMessage &&
+              current.errorMessage != null),
+      listener: (context, state) {
+        // Handle side-effects based on events
+        switch (state.lastEvent) {
+          case ChatDetailEvent.messageSent:
+            // Haptic feedback on successful send
+            unawaited(HapticFeedback.lightImpact());
+          case ChatDetailEvent.sendFailed:
+            // Show error SnackBar when message fails to send
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(context.l10n.failedToSendMessage),
+                backgroundColor: context.colorScheme.error,
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+            context.read<ChatDetailCubit>().clearError();
+          case ChatDetailEvent.none:
+            break;
+        }
+
+        // Handle load failure separately
+        if (state.status == ChatDetailStatus.failure &&
+            state.errorMessage != null &&
+            state.lastEvent == ChatDetailEvent.none) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(context.l10n.failedToLoadMessages),
+              backgroundColor: context.colorScheme.error,
+              behavior: SnackBarBehavior.floating,
+              action: SnackBarAction(
+                label: context.l10n.retry,
+                textColor: context.colorScheme.onError,
+                onPressed: () {
+                  unawaited(context.read<ChatDetailCubit>().loadMessages());
+                },
+              ),
+            ),
+          );
+          context.read<ChatDetailCubit>().clearError();
+        }
+      },
+      child: Scaffold(
+        appBar: ChatAppBar(user: conversation.user),
+        body: Column(
+          children: [
+            Expanded(
+              child: BlocBuilder<ChatDetailCubit, ChatDetailState>(
+                builder: (context, state) {
                 switch (state.status) {
                   case ChatDetailStatus.initial:
                   case ChatDetailStatus.loading:
@@ -97,7 +144,8 @@ class ChatDetailView extends StatelessWidget {
               );
             },
           ),
-        ],
+          ],
+        ),
       ),
     );
   }

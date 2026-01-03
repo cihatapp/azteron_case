@@ -27,8 +27,13 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
           messages: messages,
         ),
       );
-    } on Exception {
-      emit(state.copyWith(status: ChatDetailStatus.failure));
+    } on Exception catch (e) {
+      emit(
+        state.copyWith(
+          status: ChatDetailStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 
@@ -48,10 +53,22 @@ class ChatDetailCubit extends Cubit<ChatDetailState> {
         state.copyWith(
           messages: [...state.messages, message],
           isSending: false,
+          lastEvent: ChatDetailEvent.messageSent,
         ),
       );
-    } on Exception {
-      emit(state.copyWith(isSending: false));
+    } on Exception catch (e) {
+      emit(
+        state.copyWith(
+          isSending: false,
+          lastEvent: ChatDetailEvent.sendFailed,
+          errorMessage: e.toString(),
+        ),
+      );
     }
+  }
+
+  /// Clear error message after it's been handled by BlocListener
+  void clearError() {
+    emit(state.clearError());
   }
 }

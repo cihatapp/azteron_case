@@ -1,5 +1,5 @@
-import 'package:azteron_case/core/extension/context_extension.dart';
-import 'package:azteron_case/features/widgets/shimmer_loading.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
+import 'package:azteron_case/core/widgets/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 
 /// Shimmer placeholder for a message bubble.

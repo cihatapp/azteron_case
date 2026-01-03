@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:azteron_case/features/chat_detail/cubit/chat_detail_cubit.dart';
+import 'package:azteron_case/features/chat_detail/bloc/chat_detail_cubit.dart';
 import 'package:azteron_case/features/chat_detail/view/chat_detail_view.dart';
 import 'package:azteron_case/features/messages/data/models/conversation.dart';
 import 'package:flutter/material.dart';
