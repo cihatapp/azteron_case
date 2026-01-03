@@ -1,4 +1,4 @@
-import 'package:azteron_case/features/widgets/shimmer_loading.dart';
+import 'package:azteron_case/core/widgets/shimmer_loading.dart';
 import 'package:flutter/material.dart';
 
 /// Shimmer placeholder for a conversation tile.

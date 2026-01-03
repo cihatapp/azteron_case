@@ -8,12 +8,16 @@ class MessagesState extends Equatable {
     this.conversations = const [],
     this.filteredConversations = const [],
     this.searchQuery = '',
+    this.errorMessage,
   });
 
   final MessagesStatus status;
   final List<Conversation> conversations;
   final List<Conversation> filteredConversations;
   final String searchQuery;
+
+  /// Error message for BlocListener to show SnackBar
+  final String? errorMessage;
 
   /// Get display list (filtered if searching, otherwise all)
   List<Conversation> get displayConversations =>
@@ -24,6 +28,7 @@ class MessagesState extends Equatable {
     List<Conversation>? conversations,
     List<Conversation>? filteredConversations,
     String? searchQuery,
+    String? errorMessage,
   }) {
     return MessagesState(
       status: status ?? this.status,
@@ -31,6 +36,17 @@ class MessagesState extends Equatable {
       filteredConversations:
           filteredConversations ?? this.filteredConversations,
       searchQuery: searchQuery ?? this.searchQuery,
+      errorMessage: errorMessage,
+    );
+  }
+
+  /// Clear the error message after it's been handled
+  MessagesState clearError() {
+    return MessagesState(
+      status: status,
+      conversations: conversations,
+      filteredConversations: filteredConversations,
+      searchQuery: searchQuery,
     );
   }
 
@@ -40,5 +56,6 @@ class MessagesState extends Equatable {
         conversations,
         filteredConversations,
         searchQuery,
+        errorMessage,
       ];
 }

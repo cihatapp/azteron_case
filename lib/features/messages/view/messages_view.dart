@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
 import 'package:azteron_case/core/navigation/navigation_manager.dart';
-import 'package:azteron_case/features/messages/cubit/messages_cubit.dart';
+import 'package:azteron_case/features/messages/bloc/messages_cubit.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile.dart';
 import 'package:azteron_case/features/messages/widgets/conversation_tile_shimmer.dart';
 import 'package:azteron_case/features/messages/widgets/messages_app_bar.dart';
@@ -26,7 +26,34 @@ class MessagesView extends StatelessWidget {
             },
           ),
           Expanded(
-            child: BlocBuilder<MessagesCubit, MessagesState>(
+            child: BlocConsumer<MessagesCubit, MessagesState>(
+              listenWhen: (previous, current) =>
+                  previous.errorMessage != current.errorMessage &&
+                  current.errorMessage != null,
+              listener: (context, state) {
+                // Show error SnackBar when failure occurs
+                if (state.status == MessagesStatus.failure &&
+                    state.errorMessage != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(context.l10n.failedToLoadMessages),
+                      backgroundColor: context.colorScheme.error,
+                      behavior: SnackBarBehavior.floating,
+                      action: SnackBarAction(
+                        label: context.l10n.retry,
+                        textColor: context.colorScheme.onError,
+                        onPressed: () {
+                          unawaited(
+                            context.read<MessagesCubit>().loadConversations(),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                  // Clear error after showing
+                  context.read<MessagesCubit>().clearError();
+                }
+              },
               builder: (context, state) {
                 switch (state.status) {
                   case MessagesStatus.initial:

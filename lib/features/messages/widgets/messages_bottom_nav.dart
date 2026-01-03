@@ -1,4 +1,4 @@
-import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class MessagesBottomNav extends StatelessWidget {

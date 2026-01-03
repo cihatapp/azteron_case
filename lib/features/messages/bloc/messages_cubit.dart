@@ -25,9 +25,19 @@ class MessagesCubit extends Cubit<MessagesState> {
           conversations: conversations,
         ),
       );
-    } on Exception {
-      emit(state.copyWith(status: MessagesStatus.failure));
+    } on Exception catch (e) {
+      emit(
+        state.copyWith(
+          status: MessagesStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
     }
+  }
+
+  /// Clear error message after it's been handled by BlocListener
+  void clearError() {
+    emit(state.clearError());
   }
 
   /// Search conversations by user name

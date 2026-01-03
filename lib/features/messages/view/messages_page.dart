@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:azteron_case/features/messages/cubit/messages_cubit.dart';
+import 'package:azteron_case/features/messages/bloc/messages_cubit.dart';
 import 'package:azteron_case/features/messages/view/messages_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

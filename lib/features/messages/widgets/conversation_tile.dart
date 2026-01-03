@@ -1,6 +1,6 @@
-import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/extensions/context_extension.dart';
+import 'package:azteron_case/core/widgets/avatar_with_status.dart';
 import 'package:azteron_case/features/messages/data/models/conversation.dart';
-import 'package:azteron_case/features/widgets/avatar_with_status.dart';
 import 'package:flutter/material.dart';
 
 class ConversationTile extends StatelessWidget {
@@ -32,54 +32,66 @@ class ConversationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return InkWell(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      leading: AvatarWithStatus(
-        imageUrl: conversation.user.avatarUrl,
-        isOnline: conversation.user.isOnline,
-      ),
-      title: Text(
-        conversation.user.name,
-        style: context.textTheme.titleMedium?.copyWith(
-          fontWeight:
-              conversation.hasUnread ? FontWeight.bold : FontWeight.w500,
-        ),
-      ),
-      subtitle: Text(
-        conversation.lastMessage,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: context.textTheme.bodyMedium?.copyWith(
-          color: conversation.hasUnread
-              ? context.colorScheme.onSurface
-              : context.colorScheme.onSurface.withValues(alpha: 0.6),
-          fontWeight:
-              conversation.hasUnread ? FontWeight.w500 : FontWeight.normal,
-        ),
-      ),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            _formatTime(context),
-            style: context.textTheme.bodySmall?.copyWith(
-              color: conversation.hasUnread
-                  ? context.colorScheme.primary
-                  : context.colorScheme.onSurface.withValues(alpha: 0.5),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            // Avatar with status indicator
+            AvatarWithStatus(
+              imageUrl: conversation.user.avatarUrl,
+              isOnline: conversation.user.isOnline,
+              radius: 28,
+              statusSize: 14,
             ),
-          ),
-          if (conversation.hasUnread) ...[
-            const SizedBox(height: 4),
-            _UnreadBadge(count: conversation.unreadCount),
+            const SizedBox(width: 12),
+            // Name and message
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Name using theme
+                  Text(
+                    conversation.user.name,
+                    style: context.appStyles.conversationName,
+                  ),
+                  const SizedBox(height: 2),
+                  // Message using theme
+                  Text(
+                    conversation.lastMessage,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.appStyles.conversationMessage,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            // Time and badge
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Time using theme
+                Text(
+                  _formatTime(context),
+                  style: context.appStyles.timeText,
+                ),
+                if (conversation.hasUnread) ...[
+                  const SizedBox(height: 6),
+                  _UnreadBadge(count: conversation.unreadCount),
+                ],
+              ],
+            ),
           ],
-        ],
+        ),
       ),
     );
   }
 }
 
+/// Unread badge - Figma: 18x18, Poppins Medium, 12px, white
 class _UnreadBadge extends StatelessWidget {
   const _UnreadBadge({required this.count});
 
@@ -87,17 +99,20 @@ class _UnreadBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final displayText = count > 9 ? '9+' : count.toString();
+    final fontSize = count > 9 ? 9.0 : 12.0;
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      width: 18,
+      height: 18,
       decoration: BoxDecoration(
         color: context.colorScheme.primary,
-        borderRadius: BorderRadius.circular(12),
+        shape: BoxShape.circle,
       ),
-      child: Text(
-        count.toString(),
-        style: context.textTheme.labelSmall?.copyWith(
-          color: context.colorScheme.onPrimary,
-          fontWeight: FontWeight.bold,
+      child: Center(
+        child: Text(
+          displayText,
+          style: context.appStyles.badgeText.copyWith(fontSize: fontSize),
         ),
       ),
     );
