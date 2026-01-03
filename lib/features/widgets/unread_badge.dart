@@ -1,3 +1,4 @@
+import 'package:azteron_case/core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 /// A circular badge displaying unread message count.
@@ -27,17 +28,17 @@ class UnreadBadge extends StatelessWidget {
       constraints: BoxConstraints(minWidth: size),
       padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
+        color: context.colorScheme.primary,
         borderRadius: BorderRadius.circular(size / 2),
       ),
       child: Center(
         child: Text(
           displayText,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
-                fontWeight: FontWeight.bold,
-                fontSize: 11,
-              ),
+          style: context.textTheme.labelSmall?.copyWith(
+            color: context.colorScheme.onPrimary,
+            fontWeight: FontWeight.bold,
+            fontSize: 11,
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:azteron_case/core/extension/context_extension.dart';
+import 'package:azteron_case/core/theme/dark/color_scheme_dark.dart';
 import 'package:azteron_case/core/theme/light/color_scheme_light.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,22 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorSchemeLight();
+    final isDark = context.isDarkMode;
     final isSent = message.isSentByMe;
+
+    // Get theme-appropriate bubble colors
+    final Color bubbleColor;
+    final Color textColor;
+
+    if (isDark) {
+      final colors = ColorSchemeDark();
+      bubbleColor = isSent ? colors.sentBubble : colors.receivedBubble;
+      textColor = isSent ? colors.sentBubbleText : colors.receivedBubbleText;
+    } else {
+      final colors = ColorSchemeLight();
+      bubbleColor = isSent ? colors.sentBubble : colors.receivedBubble;
+      textColor = isSent ? colors.sentBubbleText : colors.receivedBubbleText;
+    }
 
     return Align(
       alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
@@ -30,7 +45,7 @@ class MessageBubble extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isSent ? colors.sentBubble : colors.receivedBubble,
+          color: bubbleColor,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(18),
             topRight: const Radius.circular(18),
@@ -44,14 +59,14 @@ class MessageBubble extends StatelessWidget {
             Text(
               message.content,
               style: context.textTheme.bodyMedium?.copyWith(
-                color: context.colorScheme.onSurface,
+                color: textColor,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               message.formattedTime,
               style: context.textTheme.bodySmall?.copyWith(
-                color: context.colorScheme.onSurface.withValues(alpha: 0.5),
+                color: textColor.withValues(alpha: 0.7),
                 fontSize: 10,
               ),
             ),
