@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:azteron_case/core/extensions/context_extension.dart';
+import 'package:azteron_case/core/widgets/widgets.dart';
 import 'package:azteron_case/features/chat_detail/bloc/chat_detail_cubit.dart';
 import 'package:azteron_case/features/chat_detail/data/models/message.dart';
 import 'package:azteron_case/features/chat_detail/widgets/chat_app_bar.dart';
@@ -69,9 +70,10 @@ class ChatDetailView extends StatelessWidget {
           context.read<ChatDetailCubit>().clearError();
         }
       },
-      child: Scaffold(
-        appBar: ChatAppBar(user: conversation.user),
-        body: Column(
+      child: UnfocusOnTap(
+        child: Scaffold(
+          appBar: ChatAppBar(user: conversation.user),
+          body: Column(
           children: [
             Expanded(
               child: BlocBuilder<ChatDetailCubit, ChatDetailState>(
@@ -144,7 +146,8 @@ class ChatDetailView extends StatelessWidget {
               );
             },
           ),
-          ],
+            ],
+          ),
         ),
       ),
     );
