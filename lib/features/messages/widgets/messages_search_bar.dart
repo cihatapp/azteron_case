@@ -53,7 +53,6 @@ class MessagesSearchBar extends StatelessWidget {
             ),
           ),
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: 0,
             vertical: 14,
           ),
         ),
